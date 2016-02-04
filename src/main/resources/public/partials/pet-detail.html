@@ -1,0 +1,49 @@
+<div class="pet-images">
+  <img ng-src="{{photo}}"
+       class="pet"
+       ng-repeat="photo in pet.photoUrls"
+       ng-class="{active: mainImageUrl==photo}">
+</div>
+
+<h1>{{pet.name}} <span style="0.7em">({{pet.category.name}})</span></h1>
+<span style="text-decoration: underline;">status: </span> {{pet.status}}
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales ex eu odio scelerisque, quis dapibus diam volutpat. Quisque viverra, lacus at laoreet pulvinar, leo augue egestas arcu, et porttitor erat sapien ultricies nibh. Ut sed tortor id justo viverra malesuada sit amet et est. Cras aliquet ipsum ipsum, vel dapibus velit pharetra vel. Cras elementum vehicula metus eu gravida. Aliquam consequat risus at risus varius lobortis. Etiam sed felis sit amet ante convallis tristique. Morbi aliquet, massa vel varius congue, mi tellus vulputate turpis, sed iaculis lacus est nec odio. Donec nec risus eu justo porttitor euismod. Duis in consectetur felis. Sed ultrices, sem vel mattis pretium, diam nisi hendrerit erat, fermentum dictum nisl nibh varius dui. Suspendisse consequat magna nec ligula tincidunt efficitur.
+
+Nunc quis tincidunt ipsum, sit amet sagittis nisi. Proin euismod nisi ac ante luctus vehicula. Pellentesque neque nisi, convallis ut ipsum eu, consequat commodo felis. In dapibus ornare ullamcorper. Duis dapibus dignissim ligula in ultrices. Vivamus id fringilla sapien. Fusce condimentum porttitor lorem, eget scelerisque arcu molestie nec. Cras ullamcorper aliquet risus, sed porttitor diam mollis in. Quisque sed purus urna. Nunc in massa risus. Vestibulum turpis purus, sollicitudin in hendrerit a, gravida facilisis lectus. Maecenas volutpat sem eget tellus molestie, sed convallis urna porta. Sed porta venenatis ex lobortis ultricies.
+
+Nam id elit vitae leo egestas finibus. Vestibulum sit amet rutrum mauris. Nulla quis risus lacinia dolor blandit placerat ac et elit. Aenean in dictum tortor. Pellentesque ex ante, placerat non dictum eget, tincidunt quis quam. Mauris purus diam, mollis non scelerisque ac, sodales vitae risus. Aliquam pulvinar malesuada elit, eu gravida ex dictum non.
+
+Fusce porta fringilla cursus. Vivamus ac tellus a eros tempus efficitur vitae a neque. Vestibulum a lectus sit amet quam lobortis cursus ullamcorper in tortor. Proin ultrices pulvinar felis at aliquam. Curabitur maximus mi eget mauris varius elementum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce vel consectetur quam, quis mattis leo. Duis sed metus a risus vulputate dignissim. Praesent eu nibh orci. Etiam in nunc vel nunc convallis varius. Vivamus eget odio ac turpis consequat aliquam.
+
+Curabitur at lacus interdum, ornare odio ut, feugiat ligula. Phasellus porta arcu et felis sagittis tincidunt. In at ante eget augue tempor rutrum. Nulla facilisi. Aliquam tincidunt dapibus ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec leo magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque tincidunt diam a efficitur faucibus. Nunc convallis hendrerit iaculis. Cras tristique justo quis dui malesuada ultricies.
+
+Integer velit sapien, sagittis eu quam nec, mollis suscipit magna. Quisque a vulputate erat. Aliquam sit amet neque sodales, vestibulum metus ac, varius leo. Aliquam maximus est sit amet gravida cursus. Nulla accumsan sagittis magna, quis sollicitudin sapien volutpat sed. Nulla tempus nulla lectus, ut egestas urna sagittis nec. Ut hendrerit orci vel tellus pulvinar, vitae interdum neque fermentum. Cras et nisl metus. Fusce facilisis varius ullamcorper. Donec at ante et sem vehicula suscipit. Mauris viverra, orci eget vestibulum pellentesque, nisi magna commodo ipsum, ac auctor ligula sem et nibh. Suspendisse finibus condimentum orci, ut euismod erat consequat quis. Vivamus tincidunt congue nisl id consequat. Curabitur in metus vitae lectus aliquet varius nec vel dui. Aliquam ut auctor diam, ut blandit dui. Vestibulum ut gravida nunc.
+
+Donec facilisis sit amet metus fringilla tincidunt. Mauris mattis arcu velit, non condimentum mi porttitor sit amet. Sed ultricies sodales libero, at maximus tellus vulputate sit amet. Ut sagittis metus eget sapien tincidunt faucibus. Ut mi metus, posuere ut nunc eu, vehicula dictum libero. Praesent et facilisis lorem. Integer eget sagittis augue. Etiam ultricies interdum arcu ut convallis. Integer id mollis ligula, sit amet varius elit. Mauris placerat suscipit tellus, non pharetra mi iaculis ut. Duis eget felis ut neque pretium tempor non ac libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas facilisis libero ut ullamcorper ultricies.
+
+</p>
+<h2>Tags</h2>
+<ul>
+	<li ng-repeat="tag in pet.tags">
+		{{tag.name}}
+	</li>
+</ul>
+
+<ul class="pet-thumbs">
+  <li ng-repeat="photo in pet.photoUrls">
+    <img ng-src="{{photo}}" ng-click="setImage(photo)">
+  </li>
+</ul>
+{{pet.status}}
+<ul class="specs">
+    <span>Description</span>
+    <dl>
+      <dt></dt>
+      <dd></dd>
+      <dt></dt>
+      <dd></dd>
+    </dl>
+  </li>
+  
+</ul>

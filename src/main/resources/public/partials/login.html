@@ -1,0 +1,29 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<!--Body content-->
+<!-- 			<img src="http://vignette1.wikia.nocookie.net/looneytunes/images/5/56/Comp_2.jpg/revision/latest?cb=20121102161419" alt="Acme logo"> -->
+			<div class="alert alert-danger" ng-show="error">
+				There was a problem logging in. Please try again (or just read below...).
+			</div>
+			<form role="form" ng-submit="login()">
+				<div class="form-group">
+					<label for="username">Username:</label>
+					<input type="text" class="form-control" id="username" name="username" ng-model="credentials.username" />
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label>
+					<input type="password" class="form-control" id="password" name="password" ng-model="credentials.password" />
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+				<div>
+					Just in case:
+					<ul>
+						<li>User: <span style="font-style: italic;">user</span>, password: <span style="font-style: italic;">password</span> (role USER)</li>
+						<li>User: <span style="font-style: italic;">admin</span>, password: <span style="font-style: italic;">password</span> (role ADMIN, USER)</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

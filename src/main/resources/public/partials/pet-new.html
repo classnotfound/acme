@@ -1,0 +1,35 @@
+<h1>New item</h1>
+<form>
+<div>
+	<div>
+		Name : <input type="text" name="name" ng-model="jsonPet.name">
+	</div>
+	<div>
+		<div>
+			<img ng-src="{{imgUrl}}" style="height:200px" ng-repeat="imgUrl in jsonPet.photoUrls track by $index">
+		</div>
+		Photo Urls : <input type="text" name="name" ng-model="newUrl"><input type="button" value="add" ng-click="addUrl()">
+	</div>
+	<div>
+		Category : 
+		<select ng-init="jsonPet.category = categories[0]" ng-options="item as item.name for item in categories track by item.id" ng-model="jsonPet.category">
+	    </select>
+	</div>
+	<div>
+		Tags : 
+		<select ng-options="item as item.name for item in tagEntries track by item.id " ng-model="jsonPet.tags" multiple>
+	    </select>
+	</div>
+	<div>
+		Status : 
+		<select ng-init="jsonPet.status = 'available'" name="status" ng-model="jsonPet.status">
+	      <option value="available">Available</option>
+	      <option value="pending">Pending</option>
+	      <option value="Sold">Sold</option>
+	    </select>
+	</div>
+	<div>
+		<input type="button" name="Save" value="Save "ng-click="savePet()">
+	</div>
+</div>
+</form>
