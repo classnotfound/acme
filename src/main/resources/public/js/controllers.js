@@ -2,24 +2,7 @@
 
 //--
 var petstoreControllers = angular.module('petstoreControllers', [])
-.controller('PhoneListCtrl', 
-		['$scope', 'Phone', function($scope, Phone) {
-    $scope.phones = Phone.query();
-    $scope.orderProp = 'age';
-  }]);
-
-petstoreControllers.controller('PhoneDetailCtrl', 
-		['$scope', '$routeParams', 'Phone', function($scope, $routeParams, Phone) {
-    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-      $scope.mainImageUrl = phone.images[0];
-    });
-
-    $scope.setImage = function(imageUrl) {
-      $scope.mainImageUrl = imageUrl;
-    };
-  }]);
-
-petstoreControllers.controller('PetListCtrl', 
+.controller('PetListCtrl', 
 		['$scope', '$location', 'PetService', function($scope, $location, PetService) {
     $scope.pets = PetService.query();
     

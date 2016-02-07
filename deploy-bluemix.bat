@@ -1,5 +1,5 @@
 @echo off
-echo you must be logged with your IBM id before launhing this script!
+echo you must be logged with your IBM id before launching this script!
 echo usage:
 echo        cf api https://api.eu-gb.bluemix.net
 pause

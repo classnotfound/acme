@@ -2,8 +2,6 @@ package net.classnotfound.pet.web;
 
 import java.util.Collection;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Propagation;
@@ -53,25 +51,19 @@ public class PetController {
 		return jsonObject;
 	}
 
-	@Transactional
+	/**
+	 * Save the pet in the database
+	 * @param jsonPet the pet to be recorded
+	 * @return the pet with its generated id
+	 */
+	@Transactional(propagation= Propagation.REQUIRED)
 	@RequestMapping(value = "/pet", method = RequestMethod.POST, consumes = {"application/json" })
 	@ResponseStatus(HttpStatus.CREATED)
-	public @ResponseBody JsonPet save(@RequestBody final JsonPet jsonPet, HttpServletRequest request) {
+	public @ResponseBody JsonPet save(@RequestBody final JsonPet jsonPet) {
 		Pet pet = new PetConverter().fromJson(jsonPet);
 		petService.save(pet);
 		JsonPet createdjson = new PetConverter().fromEntity(pet);
 		return createdjson;
-	}
-	
-	/**
-	 * Remove a pet from the database
-	 * @param id the id of the pet to delete
-	 */
-	@Transactional(propagation= Propagation.SUPPORTS)
-	@RequestMapping(value = "/pet/{id}", method = RequestMethod.DELETE)
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") final Integer id) {
-		petService.deleteById(id);
 	}
 
 }

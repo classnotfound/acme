@@ -2,23 +2,23 @@
 
 /* Services */
 
-var phonecatServices = angular.module('phonecatServices', ['ngResource']);
+var petstoreServices = angular.module('petstoreServices', ['ngResource']);
 
-phonecatServices.factory('Phone', ['$resource', function($resource){
+petstoreServices.factory('Phone', ['$resource', function($resource){
 	//return a resource object (see https://docs.angularjs.org/api/ngResource/service/$resource)
     return $resource('phones/:phoneId.json', {}, {
       query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
     });
   }]);
 
-phonecatServices.factory('PetService', ['$resource', function($resource){
+petstoreServices.factory('PetService', ['$resource', function($resource){
 	var petResource = $resource('pet/:petId', {}, {
 	       query: {method:'GET', params:{petId:'all'}, isArray:true}
 	     }); 
 	return petResource;
    }]);
 
-phonecatServices.factory('AuthService', ['$resource', '$window' , function($resource, $window){
+petstoreServices.factory('AuthService', ['$resource', '$window' , function($resource, $window){
 	var authService = {}
     	
 	authService.authenticate = function (credentials, $scope){
@@ -30,7 +30,7 @@ phonecatServices.factory('AuthService', ['$resource', '$window' , function($reso
     return authService;
   }]);
 
-phonecatServices.service('popUpSrv', function() {
+petstoreServices.service('popUpSrv', function() {
 
 	/**
 	 * Create a friendly message from an error code (like http status).
