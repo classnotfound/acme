@@ -9,12 +9,14 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.3.1.RELEASE</version>
+		
 	</parent>
 	
 	<packaging>${packaging.type}</packaging>
   
 	<properties>
 	    <packaging.type>jar</packaging.type>
+	    <appsensor.version>2.2.0</appsensor.version>
 	</properties> 
 
 	<dependencies>
@@ -32,11 +34,10 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-security</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
-		<dependency>
+				<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
@@ -45,6 +46,44 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		
+<!-- 		App sensor config -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.owasp.appsensor</groupId> -->
+<!-- 			<artifactId>appsensor-ws-rest-client</artifactId> -->
+<!-- 			<version>${appsensor.version}</version> -->
+<!-- 		</dependency> -->
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.owasp.appsensor</groupId> -->
+<!-- 			<artifactId>appsensor-ws-rest-server</artifactId> -->
+<!-- 			<version>${appsensor.version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.owasp.appsensor</groupId>
+			<artifactId>appsensor-local</artifactId>
+			<version>${appsensor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.owasp.appsensor</groupId>
+			<artifactId>appsensor-storage-jpa2</artifactId>
+			<version>${appsensor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.owasp.appsensor</groupId>
+			<artifactId>appsensor-analysis-reference</artifactId>
+			<version>${appsensor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.owasp.appsensor</groupId>
+			<artifactId>appsensor-configuration-stax</artifactId>
+			<version>${appsensor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.owasp.appsensor</groupId>
+			<artifactId>appsensor-access-control-reference</artifactId>
+			<version>${appsensor.version}</version>
 		</dependency>
 
 	</dependencies>

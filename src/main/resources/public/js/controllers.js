@@ -85,3 +85,12 @@ petstoreControllers.controller('LoginCtrl',
 	 };
 
    }]);
+
+
+petstoreControllers.controller('LogoutCtrl', 
+		['$scope', 'AuthService',  function($scope, AuthService) {
+
+     $scope.error=false;
+     AuthService.logout();
+	 
+   }]);

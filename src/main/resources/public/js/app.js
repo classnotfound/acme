@@ -29,7 +29,11 @@ petstoreApp.config(['$routeProvider',
       when('/login', {
           templateUrl: 'partials/login.html',
           controller: 'LoginCtrl'
-        }).
+      }).
+      when('/logout', {
+    	  controller: 'LogoutCtrl',
+    	  template:''
+      }).  
       otherwise({
         redirectTo: '/pets'
       });

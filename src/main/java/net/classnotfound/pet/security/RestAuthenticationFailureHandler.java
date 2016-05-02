@@ -13,10 +13,18 @@ import org.springframework.stereotype.Component;
 @Component("ajaxAuthenticationFailureHandler")
 public class RestAuthenticationFailureHandler implements AuthenticationFailureHandler{
 
+//	@Autowired
+//	private AppSensorClient client;
+	
 	@Override
-	public void onAuthenticationFailure(HttpServletRequest arg0, HttpServletResponse arg1, AuthenticationException arg2)
+	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)
 			throws IOException, ServletException {
-		arg1.sendError(HttpServletResponse.SC_FORBIDDEN, "Wrong username or password");
+//		EventManager eventManager = client.getEventManager();
+//		Event event = new Event();
+//		DetectionPoint detectionPoint = new DetectionPoint("login_err", "Wrong username or password");
+//		event.setDetectionPoint(detectionPoint);
+//		eventManager.addEvent(event);
+		response.sendError(HttpServletResponse.SC_FORBIDDEN, "Wrong username or password");
 		
 	}
 }

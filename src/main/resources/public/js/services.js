@@ -27,6 +27,13 @@ petstoreServices.factory('AuthService', ['$resource', '$window' , function($reso
 	     }); 
 		resource.post({}, function(){$scope.error=false; $window.location.href='/#/pets/'}, function(){$scope.error=true})
 	}
+	
+	authService.logout = function (){
+		var resource = $resource('/logout', {}, {
+		       post: {method:'post'}
+	     }); 
+		resource.post({}, function(){$scope.error=false}, function(){$scope.error=true})
+	}
     return authService;
   }]);
 
