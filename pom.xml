@@ -67,7 +67,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.owasp.appsensor</groupId>
-			<artifactId>appsensor-storage-jpa2</artifactId>
+			<artifactId>appsensor-storage-file-based</artifactId>
 			<version>${appsensor.version}</version>
 		</dependency>
 		<dependency>

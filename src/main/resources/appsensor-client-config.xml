@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<appsensor-client-config>
+<appsensor-client-config xmlns="https://www.owasp.org/index.php/OWASP_AppSensor_Project/xsd/appsensor_client_config_2.0.xsd">
 	<server-connection type="local"/>
 </appsensor-client-config>
