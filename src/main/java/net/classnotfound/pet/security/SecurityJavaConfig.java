@@ -56,6 +56,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 		formLogin.passwordParameter("password");
         formLogin.successHandler(authenticationSuccessHandler);
         formLogin.failureHandler(authenticationFailureHandler);
+        http.logout().logoutUrl("/logout").logoutSuccessHandler(new RestLogoutSuccessHandler());
         
     }
 

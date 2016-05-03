@@ -32,7 +32,7 @@ petstoreApp.config(['$routeProvider',
       }).
       when('/logout', {
     	  controller: 'LogoutCtrl',
-    	  template:''
+    	  templateUrl:'partials/logout.html'
       }).  
       otherwise({
         redirectTo: '/pets'

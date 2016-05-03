@@ -6,22 +6,26 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.stereotype.Component;
 /**
- * This LogoutSuccessHandler let the caller manage the not authenticated process. This handler only returns a unauthorized HTTP code.
- * @author roussehe
+ * This handler only is only for information logging purpose
+ * @author Hervé Roussel (www.classnotfound.net)
  *
  */
 @Component
 public class RestLogoutSuccessHandler implements LogoutSuccessHandler{
 
+	private static final Logger LOG = LoggerFactory.getLogger(RestLogoutSuccessHandler.class);
+	
 	@Override
 	public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
+		LOG.info("User has succesfully log out!!");
 		
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 	}
 
 }

@@ -39,7 +39,7 @@ public class RestAuthenticationFailureHandler implements AuthenticationFailureHa
 		//use this constructor as it includes the timestamp initialization
 		Event event = new Event(user, detectionPoint, detectionSystem);
 		eventManager.addEvent(event);
-		response.sendError(HttpServletResponse.SC_FORBIDDEN, "Wrong username or password");
+		//response.sendError(HttpServletResponse.SC_FORBIDDEN, "Wrong username or password");
 		
 	}
 
