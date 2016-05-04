@@ -1,5 +1,5 @@
 package net.classnotfound.pet.appsensor;
-
+//FIXME do we need it?
 //@Configuration
 public class AppSensorConfig {
 	

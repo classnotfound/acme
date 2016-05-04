@@ -1,5 +1,7 @@
 package net.classnotfound.pet.security;
 
+import javax.sql.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,20 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+	@Autowired
+	private DataSource dataSource;
  
  
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().
-          withUser("admin").password("password").roles("ADMIN", "USER").and().
-          withUser("user").password("password").roles("USER");
+//        auth.inMemoryAuthentication().
+//          withUser("admin").password("password").roles("ADMIN", "USER").and().
+//          withUser("user").password("password").roles("USER");
+        
+        auth.jdbcAuthentication().dataSource(dataSource)
+        	.usersByUsernameQuery("select username,password, enabled from users where username=?")
+        	.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
     }
  
     @Override
@@ -46,8 +55,8 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         //.csrf().disable()
         .authorizeRequests()
         .antMatchers("/login").anonymous()
-        .antMatchers(HttpMethod.GET, "/pet/**").access("hasRole('USER')")
-        .antMatchers(HttpMethod.POST, "/pet/**").access("hasRole('ADMIN')");
+        .antMatchers(HttpMethod.GET, "/pet/**").access("hasRole('ROLE_USER')")
+        .antMatchers(HttpMethod.POST, "/pet/**").access("hasRole('ROLE_ADMIN')");
         
         http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
         FormLoginConfigurer<HttpSecurity> formLogin = http.formLogin();
