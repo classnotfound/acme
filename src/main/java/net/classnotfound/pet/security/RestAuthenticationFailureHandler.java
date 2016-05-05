@@ -1,6 +1,8 @@
 package net.classnotfound.pet.security;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,9 @@ import org.owasp.appsensor.core.IPAddress;
 import org.owasp.appsensor.core.User;
 import org.owasp.appsensor.core.event.EventManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,6 +29,13 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Component("ajaxAuthenticationFailureHandler")
 public class RestAuthenticationFailureHandler implements AuthenticationFailureHandler{
+	
+	private static final Map<Class<? extends Exception>, String> MESSAGE_MAP = new HashMap<>();
+	static {
+		MESSAGE_MAP.put(LockedException.class, "Sorry, your account has been locked");
+		MESSAGE_MAP.put(DisabledException.class, "Sorry, your account has been disabled");
+		MESSAGE_MAP.put(BadCredentialsException.class, "Wrong username or password");
+	}
 
 	@Autowired
 	private AppSensorClient client;
@@ -39,7 +51,8 @@ public class RestAuthenticationFailureHandler implements AuthenticationFailureHa
 		//use this constructor as it includes the timestamp initialization
 		Event event = new Event(user, detectionPoint, detectionSystem);
 		eventManager.addEvent(event);
-		//response.sendError(HttpServletResponse.SC_FORBIDDEN, "Wrong username or password");
+		String message = MESSAGE_MAP.get(authException.getClass());
+		response.sendError(HttpServletResponse.SC_FORBIDDEN, message!=null?message:"Unknown error");
 		
 	}
 

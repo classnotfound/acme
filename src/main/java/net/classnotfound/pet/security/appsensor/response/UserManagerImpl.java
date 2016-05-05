@@ -1,6 +1,8 @@
 package net.classnotfound.pet.security.appsensor.response;
 
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.owasp.appsensor.core.User;
 import org.owasp.appsensor.core.response.UserManager;
@@ -20,10 +22,17 @@ public class UserManagerImpl implements UserManager{
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private HttpServletRequest request;
+	
 	@Override
 	public void logout(User user) {
-		// TODO Auto-generated method stub
-		LOG.info("Logout user: {}", user.getUsername());
+		LOG.info("Invalidate user session: {}", user.getUsername());
+		HttpSession session = request.getSession(false);
+		if(session!=null)
+			session.invalidate();
+		else
+			LOG.warn("User not logged in, cannot invalidate session: {}", user!=null?user.getUsername():null);
 	}
 
 	@Override

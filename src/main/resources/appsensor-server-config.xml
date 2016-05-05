@@ -79,8 +79,8 @@
 					</responses>
 				</detection-point>
 <!-- 				<detection-point> -->
-<!-- 					<category>Request</category> -->
-<!-- 					<id>login_err</id> -->
+<!-- 					<category>Authentication</category> -->
+<!-- 					<id>AE2</id> -->
 <!-- 					<threshold> -->
 <!-- 						<count>15</count> -->
 <!-- 						<interval unit="minutes">8</interval> -->
