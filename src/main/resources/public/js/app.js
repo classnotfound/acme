@@ -9,7 +9,8 @@ angular.module('petstoreApp', [
   'petstoreFilters',
   'petstoreAnimations',
   'petstoreServices',
-  'petstoreDirectives'
+  //'petstoreDirectives'
+  'petstoreComponents'
 ])
 .config(['$routeProvider',
   function($routeProvider) {
