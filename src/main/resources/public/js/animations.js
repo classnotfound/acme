@@ -1,6 +1,5 @@
-var petstoreAnimations = angular.module('petstoreAnimations', ['ngAnimate']);
-
-petstoreAnimations.animation('.pet', function() {
+angular.module('petstoreAnimations', ['ngAnimate'])
+.animation('.pet', function() {
 
   var animateUp = function(element, className, done) {
     if(className != 'active') {

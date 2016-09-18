@@ -1,24 +1,20 @@
 'use strict';
 
 /* Services */
-
-var petstoreServices = angular.module('petstoreServices', ['ngResource']);
-
-petstoreServices.factory('Phone', ['$resource', function($resource){
+angular.module('petstoreServices', ['ngResource'])
+  .factory('Phone', ['$resource', function($resource){
 	//return a resource object (see https://docs.angularjs.org/api/ngResource/service/$resource)
     return $resource('phones/:phoneId.json', {}, {
       query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
     });
-  }]);
-
-petstoreServices.factory('PetService', ['$resource', function($resource){
+  }])
+  .factory('PetService', ['$resource', function($resource){
 	var petResource = $resource('pet/:petId', {}, {
 	       query: {method:'GET', params:{petId:'all'}, isArray:true}
 	     }); 
 	return petResource;
-   }]);
-
-petstoreServices.factory('AuthService', ['$resource', '$window' , function($resource, $window){
+   }])
+   .factory('AuthService', ['$resource', '$window' , function($resource, $window){
 	var authService = {}
     	
 	authService.authenticate = function (credentials, $scope){
@@ -28,9 +24,8 @@ petstoreServices.factory('AuthService', ['$resource', '$window' , function($reso
 		resource.post({}, function(){$scope.error=false; $window.location.href='/#/pets/'}, function(){$scope.error=true})
 	}
     return authService;
-  }]);
-
-petstoreServices.service('popUpSrv', function() {
+  }])
+  .service('popUpSrv', function() {
 
 	/**
 	 * Create a friendly message from an error code (like http status).

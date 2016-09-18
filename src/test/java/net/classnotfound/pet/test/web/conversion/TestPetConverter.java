@@ -16,7 +16,7 @@ import net.classnotfound.pet.Application;
 import net.classnotfound.pet.domain.Pet;
 import net.classnotfound.pet.domain.Photo;
 import net.classnotfound.pet.service.PetService;
-import net.classnotfound.pet.web.consersion.PetConverter;
+import net.classnotfound.pet.web.conversion.PetConverter;
 import net.classnotfound.pet.web.json.Category;
 import net.classnotfound.pet.web.json.JsonPet;
 import net.classnotfound.pet.web.json.TagsEntry;

@@ -2,16 +2,16 @@
 
 /* App Module */
 
-var petstoreApp = angular.module('petstoreApp', [
+angular.module('petstoreApp', [
   'ngRoute',
   'ngCookies',
   'petstoreControllers',
   'petstoreFilters',
   'petstoreAnimations',
-  'petstoreServices'
-]);
-
-petstoreApp.config(['$routeProvider',
+  'petstoreServices',
+  'petstoreDirectives'
+])
+.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/pets', {
@@ -33,7 +33,7 @@ petstoreApp.config(['$routeProvider',
       otherwise({
         redirectTo: '/pets'
       });
-  }]);
+  }])
 
 
 ////Need ngCookie module to work!!!
@@ -52,11 +52,10 @@ petstoreApp.config(['$routeProvider',
 //    $httpProvider.interceptors.push('csrfInjector');
 //}]);
 
-petstoreApp.config(['$httpProvider', function($httpProvider){
+.config(['$httpProvider', function($httpProvider){
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-TOKEN';
-}]);
-
-petstoreApp.factory('errorInterceptor', ['$q', '$location', '$window', '$injector', function($q, $location, $window, $injector) {
+}])
+.factory('errorInterceptor', ['$q', '$location', '$window', '$injector', function($q, $location, $window, $injector) {
 	var authSrv;
 	var popupSrv;
 	var errorInterceptor = {
@@ -81,8 +80,8 @@ petstoreApp.factory('errorInterceptor', ['$q', '$location', '$window', '$injecto
 				return $q.reject(rejection);
 			}};
 	return errorInterceptor;
-}]);
-petstoreApp.config(['$httpProvider', function($httpProvider) {  
+}])
+.config(['$httpProvider', function($httpProvider) {  
     $httpProvider.interceptors.push('errorInterceptor');
 }]);
 

@@ -1,7 +1,7 @@
 'use strict';
 
 //--
-var petstoreControllers = angular.module('petstoreControllers', [])
+angular.module('petstoreControllers', [])
 .controller('PetListCtrl', 
 		['$scope', '$location', 'PetService', function($scope, $location, PetService) {
     $scope.pets = PetService.query();
@@ -10,9 +10,8 @@ var petstoreControllers = angular.module('petstoreControllers', [])
 	  $location.path('/pets/new');
 	};
     
-  }]);
-
-petstoreControllers.controller('PetDetailCtrl', 
+  }])
+  .controller('PetDetailCtrl', 
 		['$scope', '$routeParams', 'PetService', function($scope, $routeParams, PetService) {
      $scope.pet = PetService.get({petId: $routeParams.petId}, function(petService) {
        $scope.mainImageUrl = $scope.pet.photoUrls[0];
@@ -21,9 +20,8 @@ petstoreControllers.controller('PetDetailCtrl',
      $scope.setImage = function(imageUrl) {
        $scope.mainImageUrl = imageUrl;
      };
-   }]);
-
-petstoreControllers.controller('PetNewCtrl', 
+   }])
+   .controller('PetNewCtrl', 
 		['$scope', '$routeParams', '$log', '$location', 'PetService', function($scope, $routeParams, $log, $location, PetService) {
      $scope.jsonPet = {photoUrls: []};
      $scope.newUrl;
@@ -72,9 +70,8 @@ petstoreControllers.controller('PetNewCtrl',
     	 $scope.newUrl="";
      }
  
-   }]);
-
-petstoreControllers.controller('LoginCtrl', 
+   }])
+   .controller('LoginCtrl', 
 		['$scope', '$log', 'AuthService',  function($scope, $log, AuthService) {
      $scope.credentials = {};
      $scope.error=false;
